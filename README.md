@@ -18,11 +18,16 @@
 Склонировать репозиторий:
 
     git clone https://github.com/EvgenyiFilatov/startup_project2.git
+
+Перейдите в директорию с проектом:
+
     cd startup_project2
 
-Создать виртуальное окружение и активировать:
+Создать виртуальное окружение:
 
     python -m venv venv
+
+И активровать:
 
     source venv/bin/activate  (Windows: venv\Scripts\activate)
 
@@ -33,7 +38,7 @@
 Настроить переменные окружения:
 
     Скопировать .env.example → .env и заполнить основные поля: SECRETKEY, DEBUG, SOCIAL_AUTH_GOOGLE_OAUTH2_KEY, SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET
-    
+
 Применить миграции:
 
     python manage.py migrate
@@ -41,9 +46,11 @@
 Создать суперпользователя:
 
     python manage.py createsuperuser
+
 Запустить сервер:
 
     python manage.py runserver
+    
 Открыть в браузере:
 
     http://127.0.0.1:8000
