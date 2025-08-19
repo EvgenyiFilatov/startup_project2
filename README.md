@@ -15,21 +15,35 @@
 - Дополнительно: dotenv для конфигурации из .env
 
 ### Как запустить проект локально
-- Склонировать репозиторий
+Склонировать репозиторий:
+
     git clone https://github.com/EvgenyiFilatov/startup_project2.git
     cd startup_project2
-- Создать виртуальное окружение и активировать
+
+Создать виртуальное окружение и активировать:
+
     python -m venv venv
+
     source venv/bin/activate  (Windows: venv\Scripts\activate)
-- Установить зависимости
+
+Установить зависимости:
+
     pip install -r requirements.txt
-- Настроить переменные окружения
+
+Настроить переменные окружения:
+
     Скопировать .env.example → .env и заполнить основные поля: SECRETKEY, DEBUG, SOCIAL_AUTH_GOOGLE_OAUTH2_KEY, SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET
-- Применить миграции
+    
+Применить миграции:
+
     python manage.py migrate
-- Создать суперпользователя
+
+Создать суперпользователя:
+
     python manage.py createsuperuser
-- Запустить сервер
+Запустить сервер:
+
     python manage.py runserver
-- Открыть в браузере
+Открыть в браузере:
+
     http://127.0.0.1:8000
