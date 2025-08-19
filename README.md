@@ -16,20 +16,20 @@
 
 ### Как запустить проект локально
 - Склонировать репозиторий
-  - git clone https://github.com/EvgenyiFilatov/startup_project2.git
-  - cd startup_project2
+    git clone https://github.com/EvgenyiFilatov/startup_project2.git
+    cd startup_project2
 - Создать виртуальное окружение и активировать
-  - python -m venv venv
-  - source venv/bin/activate  (Windows: venv\Scripts\activate)
+    python -m venv venv
+    source venv/bin/activate  (Windows: venv\Scripts\activate)
 - Установить зависимости
-  - pip install -r requirements.txt
+    pip install -r requirements.txt
 - Настроить переменные окружения
-  - Скопировать .env.example → .env и заполнить основные поля: SECRETKEY, DEBUG, SOCIAL_AUTH_GOOGLE_OAUTH2_KEY, SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET
+    Скопировать .env.example → .env и заполнить основные поля: SECRETKEY, DEBUG, SOCIAL_AUTH_GOOGLE_OAUTH2_KEY, SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET
 - Применить миграции
-  - python manage.py migrate
+    python manage.py migrate
 - Создать суперпользователя
-  - python manage.py createsuperuser
+    python manage.py createsuperuser
 - Запустить сервер
-  - python manage.py runserver
+    python manage.py runserver
 - Открыть в браузере
-  - http://127.0.0.1:8000
+    http://127.0.0.1:8000
