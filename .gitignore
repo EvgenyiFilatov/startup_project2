@@ -1,0 +1,12 @@
+.env
+
+__pycache__/
+
+db.sqlite3
+db.sqlite3-journal
+
+venv/
+
+.mypy_cache/
+.dmypy.json
+dmypy.json

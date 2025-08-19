@@ -1,0 +1,38 @@
+
+{% extends "base.html" %}
+
+{% block title %}{{ startup.name }}{% endblock %}
+
+{% block content %}
+<h2>{{ startup.name }}</h2>
+<p><strong>Описание</strong>: {{ startup.description }}</p>
+{% if members %}
+    <h3>Разработчики</h3>
+    <ul>
+        {% for member in members %}
+            <li>
+                {{ member.user.first_name }} {{ member.user.last_name }} ({{ member.role }})
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Разработчики не добавлены.</p>
+{% endif %}
+<a href="{% url 'startup:startup_edit' startup.pk %}"
+    class="btn btn-outline-primary btn-sm w-100"
+    style="border-radius: 1.2rem; font-size: 1.15rem; padding: 0.45rem 0.5rem;">
+    <strong> Редактировать</strong>
+</a>
+
+<a href="{% url 'startup:startup_delete' startup.pk %}"
+    class="btn btn-outline-primary btn-sm w-100"
+    style="border-radius: 1.2rem; font-size: 1.15rem; padding: 0.45rem 0.5rem;">
+    <strong> Удалить</strong>
+</a>
+
+<a href="{% url 'startup:startup_list' %}"
+    class="btn btn-outline-primary btn-sm w-100"
+    style="border-radius: 1.2rem; font-size: 1.15rem; padding: 0.45rem 0.5rem;">
+    <strong> ← Назад к списку</strong>
+</a>
+{% endblock %}

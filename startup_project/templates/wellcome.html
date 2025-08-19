@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+{% if user.first_name and user.last_name %}
+    <div class="card shadow-lg border-0 rounded-4 p-4 mb-4">
+    <div class="card-body text-center py-3">
+        <h2 class="mb-3">Добро пожаловать</h2>
+        <h2>{{ user.first_name|add:" "|add:user.last_name|default:"" }}!</h2>
+    </div>
+</div>
+
+    <div class="card shadow-lg border-0 rounded-4 p-4 mb-4">
+    <div class="card-body text-center py-3">
+        <a href="{% url 'startup:startup_list' %}"
+           class="btn btn-outline-primary btn-lg px-5 py-3 fs-3 w-100"
+           style="border-radius: 1.5rem;">
+            Мои стартапы
+        </a>
+    </div>
+</div>
+    <form method="post" action="{% url 'logout' %}" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-primary mt-3">Выйти</button>
+    </form>
+{% else %}
+    <h2>Привет, новый пользователь!</h2>
+    <p>Пожалуйста, заполните ваши имя и фамилию для завершения регистрации.</p>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="text" name="first_name" class="form-control" placeholder="Имя" required>
+        </div>
+        <div class="mb-3">
+            <input type="text" name="last_name" class="form-control" placeholder="Фамилия" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+    <form method="post" action="{% url 'logout' %}" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-primary mt-3">Выйти</button>
+    </form>
+{% endif %}
+{% endblock %}

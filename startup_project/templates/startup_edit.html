@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Редактирование {{ startup.name }}{% endblock %}
+
+{% block content %}
+<h2>Редактировать стартап</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {{ formset.management_form }}
+
+    <div id="formset-area">
+        {% if formset.non_form_errors %}
+            <div class="alert alert-danger">
+                {% for error in formset.non_form_errors %}
+                    <div>{{ error }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% for f in formset %}
+        
+        <div style="margin-bottom:15px;padding:10px;border:1px solid #ccc;" class="formset-form">
+            {{ f.as_p }}
+        </div>
+    {% endfor %}
+    </div>
+    <div id="empty-form-template" style="display:none;">
+        <div style="margin-bottom:15px;padding:10px;border:1px solid #ccc;" class="formset-form">
+            {{ formset.empty_form.as_p|safe }}
+        </div>
+    </div>
+
+    <button type="button" id="add-form" class="btn btn-outline-success" style="margin-bottom: 20px;">Добавить разработчика</button>
+    <br>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+    <a class="btn btn-secondary" href="{% url 'startup:startup_detail' startup.pk %}">Отмена</a>
+</form>
+
+<script>
+let formsetArea = document.getElementById('formset-area');
+let totalForms = document.getElementById('id_startupdeveloper_set-TOTAL_FORMS');
+let addFormBtn = document.getElementById('add-form');
+let emptyFormTemplate = document.getElementById('empty-form-template').innerHTML;
+
+addFormBtn.addEventListener('click', function() {
+    let formCount = parseInt(totalForms.value);
+    let newFormHtml = emptyFormTemplate.replace(/__prefix__/g, formCount);
+
+    formsetArea.insertAdjacentHTML('beforeend', newFormHtml);
+
+    totalForms.value = formCount + 1;
+});
+</script>
+{% endblock %}
