@@ -27,9 +27,13 @@
 
     python -m venv venv
 
-И активровать:
+И активировать:
 
-    source venv/bin/activate  (Windows: venv\Scripts\activate)
+    source venv/bin/activate
+
+Для Windows: 
+    
+    source venv\Scripts\activate
 
 Установить зависимости:
 
@@ -50,7 +54,7 @@
 Запустить сервер:
 
     python manage.py runserver
-    
+
 Открыть в браузере:
 
     http://127.0.0.1:8000
